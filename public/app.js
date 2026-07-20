@@ -326,13 +326,22 @@ $('generateBtn').addEventListener('click', async () => {
         audience: $('audience').value,
       }),
     });
-    const data = await res.json();
+    const contentType = res.headers.get('content-type') || '';
 
-    if (!res.ok) {
-      statusEl.textContent = data.error || 'Generation failed.';
-      statusEl.className = 'status error';
-      return;
-    }
+let data;
+
+if (contentType.includes('application/json')) {
+  data = await res.json();
+} else {
+  const text = await res.text();
+  throw new Error(
+    `Server returned ${res.status}: ${text.substring(0, 150)}`
+  );
+}
+
+if (!res.ok) {
+  throw new Error(data.error || `Request failed (${res.status})`);
+}
 
     $('subject').value = data.subject || '';
     $('bodyHtml').value = data.body_html || '';
