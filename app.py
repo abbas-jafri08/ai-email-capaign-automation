@@ -445,9 +445,22 @@ def campaign_status(campaign_id):
 @app.route("/api/track/<token>.gif", methods=["GET"])
 def track_open(token):
     mapping = store.resolve_token(token)
+
     if mapping:
         campaign_id, email_addr = mapping
-        store.mark_opened(campaign_id, email_addr)
+        campaign = store.get_campaign(campaign_id)
+
+        if campaign:
+            recipient = campaign.get("recipients", {}).get(email_addr)
+
+            if recipient:
+                sent_at = recipient.get("sent_at")
+                now = time.time()
+
+                # Ignore pixel requests occurring almost immediately after sending.
+                # These are often automated security/image scanners.
+                if sent_at and (now - sent_at) > 15:
+                    store.mark_opened(campaign_id, email_addr)
 
     return Response(
         TRACKING_GIF,
