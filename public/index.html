@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relay — Email Campaigns</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <a href="#welcomeWrap" class="site-logo" id="siteLogo">FAANG</a>
+
+  <canvas id="pageParticles" class="page-particles"></canvas>
+
+  <section id="welcomeWrap" class="welcome-wrap">
+    <div id="welcomeSticky" class="welcome-sticky">
+      <canvas id="particleCanvas" class="particle-canvas"></canvas>
+      <div class="welcome-content">
+        <span class="welcome-eyebrow">self-hosted campaign sender</span>
+        <div class="welcome-brand">
+          <span class="welcome-brand-icon">&#9993;</span>
+          <span class="welcome-brand-name">Relay</span>
+        </div>
+        <p class="welcome-headline">Every cold lead has a warm reply in it.</p>
+        <p class="welcome-sub">FAANG drafts, sends, and follows up on your email campaigns — reading every reply so the next message always lands warmer than the last.</p>
+        <div class="welcome-ctas">
+          <a href="#toolStart" class="btn btn-primary welcome-cta-primary">Start warming leads <span aria-hidden="true">&#8599;</span></a>
+          <a href="#howItWarms" class="btn btn-secondary welcome-cta-secondary">See how it works</a>
+        </div>
+        <p class="welcome-scroll-cue" id="scrollCue">Scroll to enter <span class="arrow">&darr;</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="landing">
+    <div class="landing-inner">
+
+      <div class="landing-section" id="howItWarms">
+        <p class="eyebrow">How it warms up</p>
+        <h2 class="landing-heading">One list in. A ranked queue of warm replies out.</h2>
+      </div>
+
+      <div class="steps-grid" id="stepsGrid">
+        <div class="steps-line-track"><div class="steps-line-fill" id="stepsLineFill"></div></div>
+        <div class="step-item">
+          <span class="step-num">01</span>
+          <h3>Import</h3>
+          <p>Drop in a CSV of leads. We de-dupe, enrich, and score them cold-to-warm on arrival.</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num">02</span>
+          <h3>Draft</h3>
+          <p>The AI writes an opener tuned to each lead's industry and role — not a mail-merge.</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num">03</span>
+          <h3>Warm</h3>
+          <p>Every open, click and reply nudges the sequence — pacing, tone, and timing adjust automatically.</p>
+        </div>
+        <div class="step-item">
+          <span class="step-num">04</span>
+          <h3>Convert</h3>
+          <p>Warm leads surface in your inbox, ranked, so your team spends time only where it counts.</p>
+        </div>
+      </div>
+
+      <div class="landing-section">
+        <p class="eyebrow">Built for the follow-up</p>
+        <h2 class="landing-heading">Most tools stop at &quot;sent.&quot; This one reads what comes back.</h2>
+      </div>
+
+      <div class="feature-grid" id="featureGrid">
+        <div class="feature-card">
+          <h3>Warm, not spammy</h3>
+          <p>Sequences that read like a person wrote them — because the AI drafts every follow-up around the reply before it, not a template.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Automation that waits</h3>
+          <p>Follow-ups fire on engagement signals, not a fixed clock. Opens, clicks and replies all reroute the sequence in real time.</p>
+        </div>
+        <div class="feature-card">
+          <h3>See the heat, not just the count</h3>
+          <p>Every lead carries a temperature — how close they are to replying — so your team works the list in the right order.</p>
+        </div>
+        <div class="feature-card">
+          <h3>From CSV to campaign in minutes</h3>
+          <p>Import a list, pick a tone, and the first draft is ready before your coffee is.</p>
+        </div>
+      </div>
+
+      <div class="landing-cta">
+        <h2>Stop sending cold. Start closing warm.</h2>
+        <p>No credit card. Your first campaign is live in under ten minutes.</p>
+        <a href="#toolStart" class="btn btn-primary landing-cta-btn">Start free <span aria-hidden="true">&#8599;</span></a>
+      </div>
+
+    </div>
+    <div class="landing-foot">
+      <span>&copy; 2026 FAANG</span>
+      <span>Built for people who hate cold email as much as you do.</span>
+    </div>
+  </section>
+
+  <div class="page" id="toolStart">
+
+    <header class="hero">
+      <canvas id="heroCanvas" class="particle-canvas"></canvas>
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+      <div class="glow glow-c"></div>
+      <div class="hero-inner">
+        <div class="brand">
+          <span class="brand-icon">&#9993;</span>
+          <span class="brand-name">Relay</span>
+        </div>
+        <p class="eyebrow">self-hosted campaign sender</p>
+        <h1>Draft it, send it, watch every recipient land.</h1>
+        <p class="hero-sub">Paste a CSV, wire up your own SMTP account, and go — nothing leaves this page until you press send.</p>
+      </div>
+    </header>
+
+
+    <main class="wrap">
+      <div class="grid">
+
+        <!-- LEFT: Campaign content -->
+        <section class="card">
+          <h2><span class="step">01</span> Compose</h2>
+
+          <label class="section-label">Email content</label>
+          <label for="subject">Subject line</label>
+          <input id="subject" type="text" class="input" placeholder="e.g. Hi {{name}}, your early-bird discount is here" />
+
+          <label for="bodyHtml">Email body (HTML) <span class="hint">{{name}}, {{email}}, or any CSV column</span></label>
+          <textarea id="bodyHtml" class="input mono" rows="11" placeholder="<p>Hi {{name}},</p><p>...</p>"></textarea>
+
+          <div class="divider"></div>
+
+          <label class="section-label">AI draft assistant <span class="hint">optional — fills in the fields above</span></label>
+
+          <label for="aiPrompt">Campaign goal</label>
+          <textarea id="aiPrompt" class="input" rows="3" placeholder="e.g. Announce our new product launch, 20% early-bird discount, ends Friday"></textarea>
+
+          <div class="field-row">
+            <label class="field">
+              <span>Tone</span>
+              <select id="tone" class="input">
+                <option>Professional and friendly</option>
+                <option>Casual and fun</option>
+                <option>Urgent / sales-driven</option>
+                <option>Formal / corporate</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Audience</span>
+              <input id="audience" type="text" class="input" placeholder="e.g. existing customers" />
+            </label>
+          </div>
+
+          <button id="generateBtn" class="btn btn-primary">Draft with AI</button>
+          <p id="generateStatus" class="status"></p>
+        </section>
+
+        <!-- RIGHT: Recipients + SMTP + Send -->
+        <section class="card">
+          <h2><span class="step">02</span> Recipients &amp; send</h2>
+
+          <label for="recipientsCsv">Recipient list <span class="hint">CSV, TXT, TSV, JSON, VCF, or Excel — emails are extracted automatically</span></label>
+
+          <div id="csvDropzone" class="dropzone">
+            <input id="csvFile" type="file" accept=".csv,.txt,.tsv,.json,.vcf,.xlsx,.xls" class="dropzone-input" />
+            <span class="dropzone-text"><strong>Click to upload</strong> or drag a file here <em>(CSV, TXT, TSV, JSON, VCF, XLSX, XLS)</em></span>
+          </div>
+          <p class="hint" id="csvFileStatus"></p>
+
+          <details id="pasteDetails" class="paste-details">
+            <summary>Or paste CSV text instead</summary>
+            <textarea id="recipientsCsv" class="input mono" rows="6" placeholder="email,name,company
+jane@example.com,Jane,Acme Corp
+john@example.com,John,Globex Inc"></textarea>
+          </details>
+          <p class="hint" id="recipientCount"></p>
+
+          <div class="divider"></div>
+
+          <label class="section-label">SMTP account</label>
+
+          <label class="field">
+            <span>Provider <span class="hint">fills in host &amp; port for you</span></span>
+            <select id="smtpProvider" class="input">
+              <option value="custom">Custom / other</option>
+              <option value="gmail">Gmail</option>
+              <option value="outlook">Outlook / Office 365</option>
+              <option value="yahoo">Yahoo Mail</option>
+              <option value="zoho">Zoho Mail</option>
+              <option value="sendgrid">SendGrid</option>
+            </select>
+          </label>
+
+          <div class="field-row">
+            <label class="field">
+              <span>Host</span>
+              <input id="smtpHost" type="text" class="input" placeholder="smtp.gmail.com" />
+            </label>
+            <label class="field field-small">
+              <span>Port</span>
+              <input id="smtpPort" type="text" class="input" placeholder="587" />
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="field">
+              <span>Username</span>
+              <input id="smtpUser" type="text" class="input" placeholder="you@example.com" />
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input id="smtpPass" type="password" class="input" placeholder="••••••••" />
+            </label>
+          </div>
+          <label class="field">
+            <span>From name <em>optional</em></span>
+            <input id="fromName" type="text" class="input" placeholder="Your Company" />
+          </label>
+
+          <label class="section-label">Sending options</label>
+          <label class="field">
+            <span>Delay between emails (ms)</span>
+            <input id="delayMs" type="text" class="input" placeholder="500" />
+          </label>
+
+          <button id="sendBtn" class="btn btn-primary">Send campaign</button>
+
+          <div id="progressWrap" class="progress-wrap hidden">
+            <div class="progress-track"><div id="progressFill" class="progress-fill"></div></div>
+            <p id="progressText" class="status"></p>
+          </div>
+
+          <ul id="log" class="console"></ul>
+        </section>
+
+      </div>
+
+      <!-- 03: Past campaigns + per-recipient open/delivery tracking -->
+      <section class="card card-wide" id="campaignsCard">
+        <h2><span class="step">03</span> Your campaigns</h2>
+        <p class="hint">Pick a campaign to see who it went to, whether it landed, and whether they've opened it.</p>
+
+        <div class="field-row campaigns-controls">
+          <label class="field">
+            <span>Campaign</span>
+            <select id="campaignSelect" class="input">
+              <option value="">No campaigns sent yet</option>
+            </select>
+          </label>
+          <button id="refreshCampaignsBtn" class="btn btn-primary campaigns-refresh-btn" type="button">Refresh</button>
+        </div>
+
+        <div id="campaignSummary" class="campaign-summary hidden"></div>
+
+        <div class="status-table-wrap">
+          <table class="status-table" id="statusTable">
+            <thead>
+              <tr><th>Recipient</th><th>Delivery</th><th>Opened</th></tr>
+            </thead>
+            <tbody id="statusTableBody"></tbody>
+          </table>
+          <p class="status-empty" id="statusEmpty">Send a campaign, then select it above to see recipient status here.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="foot">Runs locally — SMTP credentials are used in-memory only, never written to disk.</footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
