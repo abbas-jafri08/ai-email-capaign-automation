@@ -400,7 +400,7 @@ function renderRecipientRows(recipients) {
     }
 
     const openedHtml = r.opened
-      ? `<span class="opened-badge opened">&#9673; seen${r.openedAt ? ' · ' + formatTime(r.openedAt) : ''}</span>`
+      ? `<span class="opened-badge opened">&#9673; open detected${r.openedAt ? ' · ' + formatTime(r.openedAt) : ''}</span>`
       : `<span class="opened-badge not-opened">not opened yet</span>`;
 
     row.innerHTML = `
